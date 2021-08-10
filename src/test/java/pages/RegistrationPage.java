@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage {
     WebDriver driver;
@@ -55,7 +56,7 @@ public class RegistrationPage {
     @FindBy(id = "city")
     WebElement cityName;
 
-    @FindBy(id = "uniform-id_state")
+    @FindBy(id = "id_state")
     WebElement stateDropDown;
 
     @FindBy(xpath = "//*[@id='id_state']/option[54]")
@@ -149,9 +150,12 @@ public class RegistrationPage {
         cityName.sendKeys(strCityName);
     }
 
-    public void setStateDropDown(String strtStateDropDown) {
+    public void setStateDropDown(String strStateDropDown) {
 
-        cityName.sendKeys(strtStateDropDown);
+        Select selectStateName = new Select(stateDropDown);
+        selectStateName.selectByValue(strStateDropDown);
+
+//        cityName.sendKeys(strtStateDropDown);
     }
 
 
@@ -180,7 +184,7 @@ public class RegistrationPage {
             String strAuthEmail, String strRegCusFname, String strRegCusLname,
             String strRegCusPass, String strAddrsFname, String strAddrsLname,
             String strCmpnyName, String strAddressLineOne, String strAddressLineTwo,
-            String strCityName)
+            String strCityName, String strStateDropDown)
     {
 
         this.clickIndexSignIn();
@@ -196,7 +200,7 @@ public class RegistrationPage {
         this.setAddressLineOne(strAddressLineOne);
         this.setAddressLineTwo(strAddressLineTwo);
         this.setCityName(strCityName);
-
+        this.setStateDropDown(strStateDropDown);
 
     }
 }
