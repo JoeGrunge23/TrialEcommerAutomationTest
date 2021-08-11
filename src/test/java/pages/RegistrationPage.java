@@ -59,8 +59,8 @@ public class RegistrationPage {
     @FindBy(id = "id_state")
     WebElement stateDropDown;
 
-    @FindBy(xpath = "//*[@id='id_state']/option[54]")
-    WebElement stateOption;
+    @FindBy(id = "postcode")
+    WebElement postalCode;
 
     @FindBy(id = "other")
     WebElement additionalInformation;
@@ -84,7 +84,6 @@ public class RegistrationPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
 
     public void setAuthenticationEmail(String strAuthEmail) {
         authenticationEmail.sendKeys(strAuthEmail);
@@ -150,15 +149,41 @@ public class RegistrationPage {
         cityName.sendKeys(strCityName);
     }
 
+    public void setPostalCode(String strPostalCode) {
+
+        postalCode.sendKeys(strPostalCode);
+    }
+
     public void setStateDropDown(String strStateDropDown) {
 
         Select selectStateName = new Select(stateDropDown);
         selectStateName.selectByValue(strStateDropDown);
 
-//        cityName.sendKeys(strtStateDropDown);
+     }
+
+    public void setAdditionalInformation(String strAdditionalInformation) {
+
+        additionalInformation.sendKeys(strAdditionalInformation);
     }
 
+    public void setHomePhoneNumber(String strHomePhoneNumber) {
 
+        homePhoneNumber.sendKeys(strHomePhoneNumber);
+    }
+
+    public void setMobilePhoneNumber(String strMobilePhoneNumber) {
+
+        mobilePhoneNumber.sendKeys(strMobilePhoneNumber);
+    }
+
+    public void setAddressAlias(String strAddressAlias) {
+
+        addressAlias.sendKeys(strAddressAlias);
+    }
+
+    public void clickRgstrBtn() {
+        rgstrBtn.click();
+    }
 
     /**
      * @param strAuthEmail
@@ -169,13 +194,14 @@ public class RegistrationPage {
      * @param strAddrsLname
      * @param strCmpnyName
      * @param strAddressLineOne
+     * @param strAddressLineTwo
      * @param strCityName
-     * @param
-     * @param
-     * @param
-     * @param
-     * @param
-     * @param
+     * @param strStateDropDown
+     * @param strAdditionalInformation
+     * @param strHomePhoneNumber
+     * @param strMobilePhoneNumber
+     * @param strAddressAlias
+     * @param strPostalCode
      * @return
      *
      */
@@ -184,7 +210,8 @@ public class RegistrationPage {
             String strAuthEmail, String strRegCusFname, String strRegCusLname,
             String strRegCusPass, String strAddrsFname, String strAddrsLname,
             String strCmpnyName, String strAddressLineOne, String strAddressLineTwo,
-            String strCityName, String strStateDropDown)
+            String strCityName, String strStateDropDown, String strPostalCode, String strAdditionalInformation,
+            String strHomePhoneNumber, String strMobilePhoneNumber, String strAddressAlias)
     {
 
         this.clickIndexSignIn();
@@ -201,6 +228,11 @@ public class RegistrationPage {
         this.setAddressLineTwo(strAddressLineTwo);
         this.setCityName(strCityName);
         this.setStateDropDown(strStateDropDown);
-
+        this.setPostalCode(strPostalCode);
+        this.setAdditionalInformation(strAdditionalInformation);
+        this.setHomePhoneNumber(strHomePhoneNumber);
+        this.setMobilePhoneNumber(strMobilePhoneNumber);
+        this.setAddressAlias(strAddressAlias);
+        this.clickRgstrBtn();
     }
 }

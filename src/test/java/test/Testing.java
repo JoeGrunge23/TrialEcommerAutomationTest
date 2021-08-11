@@ -1,6 +1,5 @@
 package test;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
@@ -9,7 +8,7 @@ import pages.RegistrationPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class RegistrationTest {
+public class Testing {
     String driverPathLinux = "resources/linux/chromedriver";
     WebDriver driver;
     RegistrationPage objRegistration;
@@ -45,6 +44,4 @@ public class RegistrationTest {
                         "202-555-0102",
                         "Test Alias");
     }
-
-
 }
