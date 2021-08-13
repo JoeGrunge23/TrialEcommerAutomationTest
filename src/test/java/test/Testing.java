@@ -2,16 +2,22 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.LoginTest;
 import pages.RegistrationPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class Testing {
-    String driverPathLinux = "resources/linux/chromedriver";
+    String driverPathLinux = "resources/linux/chromedriver",
+            userName = "23test081021@mailinator.com",
+            password = "Test123";
+
     WebDriver driver;
     RegistrationPage objRegistration;
+    LoginTest objLoginTest;
 
     @BeforeTest
     public void setup() {
@@ -21,27 +27,40 @@ public class Testing {
         driver.get("http://automationpractice.com/index.php");
     }
 
-    @Test(priority = 0)
+    @AfterTest
+    public void quit() {
+        driver.quit();
+    }
+
+    @Test(priority = 1)
     public void registrationProcess() {
 
         objRegistration = new RegistrationPage(driver);
         objRegistration.registrationInEcommerce
                 (
-                        "3test081021@mailinator.com",
+                        userName,
                         "Test",
                         "Test",
-                        "Test123!",
-                        "Test Two",
-                        "Test Two",
+                        password,
+                        "34312 312321",
+                        "312321 321321",
                         "Company",
-                        "580 California Street",
+                        "580 California  ",
                         "California St #150",
                         "San Francisco",
                         "5",
-                        "94104",
+                        "dsads",
                         "Test Additonal",
-                        "202-555-0102",
-                        "202-555-0102",
-                        "Test Alias");
+                        "dasdas-dadsa-dasdsa",
+                        "dasdsa-asd-asd",
+                        "Test Alias"
+                );
+    }
+
+    @Test(priority = 2)
+    public void loginTestProcess(){
+        objLoginTest = new LoginTest(driver);
+        objLoginTest.loginToEcommerce(userName, password);
+
     }
 }

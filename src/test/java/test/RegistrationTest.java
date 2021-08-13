@@ -3,6 +3,7 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.RegistrationPage;
@@ -10,7 +11,9 @@ import pages.RegistrationPage;
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationTest {
-    String driverPathLinux = "resources/linux/chromedriver";
+    String driverPathLinux = "resources/linux/chromedriver",
+            userName = "10test081021@mailinator.com",
+            password = "Test123!";
     WebDriver driver;
     RegistrationPage objRegistration;
 
@@ -22,16 +25,22 @@ public class RegistrationTest {
         driver.get("http://automationpractice.com/index.php");
     }
 
+    @AfterTest
+    public void quit() {
+        driver.quit();
+    }
+
+
     @Test(priority = 0)
     public void registrationProcess() {
 
         objRegistration = new RegistrationPage(driver);
         objRegistration.registrationInEcommerce
                 (
-                        "3test081021@mailinator.com",
+                        userName,
                         "Test",
                         "Test",
-                        "Test123!",
+                        password,
                         "Test Two",
                         "Test Two",
                         "Company",

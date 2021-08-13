@@ -77,6 +77,9 @@ public class RegistrationPage {
     @FindBy(id = "submitAccount")
     WebElement rgstrBtn;
 
+    @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[2]/a")
+    WebElement signOutBtn;
+
 
 
 
@@ -184,6 +187,9 @@ public class RegistrationPage {
     public void clickRgstrBtn() {
         rgstrBtn.click();
     }
+    public void clickSignOutBtn() {
+        signOutBtn.click();
+    }
 
     /**
      * @param strAuthEmail
@@ -234,5 +240,6 @@ public class RegistrationPage {
         this.setMobilePhoneNumber(strMobilePhoneNumber);
         this.setAddressAlias(strAddressAlias);
         this.clickRgstrBtn();
+        this.clickSignOutBtn();
     }
 }
