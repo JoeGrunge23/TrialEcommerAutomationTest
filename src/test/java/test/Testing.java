@@ -2,27 +2,31 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.LoginTest;
 import pages.RegistrationPage;
+import pages.ShopTest;
 
 import java.util.concurrent.TimeUnit;
 
 public class Testing {
     String driverPathLinux = "resources/linux/chromedriver",
-            userName = "23test081021@mailinator.com",
+            userName = "9test081121@mailinator.com",
             password = "Test123";
 
     WebDriver driver;
     RegistrationPage objRegistration;
     LoginTest objLoginTest;
+    ShopTest objShop;
 
     @BeforeTest
     public void setup() {
         System.setProperty("webdriver.chrome.driver", driverPathLinux);
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://automationpractice.com/index.php");
     }
@@ -42,17 +46,17 @@ public class Testing {
                         "Test",
                         "Test",
                         password,
-                        "34312 312321",
-                        "312321 321321",
+                        "Test",
+                        "Test",
                         "Company",
-                        "580 California  ",
+                        "580 California",
                         "California St #150",
                         "San Francisco",
                         "5",
-                        "dsads",
+                        "94104",
                         "Test Additonal",
-                        "dasdas-dadsa-dasdsa",
-                        "dasdsa-asd-asd",
+                        "415-291-5475",
+                        "415-291-5475",
                         "Test Alias"
                 );
     }
@@ -63,4 +67,17 @@ public class Testing {
         objLoginTest.loginToEcommerce(userName, password);
 
     }
+
+    @Test(priority = 3)
+    public void shopTestInCommerce(){
+        objShop = new ShopTest(driver);
+
+        objShop.shopTestInCommerce(
+                userName,
+                password,
+                "2",
+                "M");
+
+    }
+
 }

@@ -81,12 +81,12 @@ public class RegistrationPage {
     WebElement signOutBtn;
 
 
-
-
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+
 
     public void setAuthenticationEmail(String strAuthEmail) {
         authenticationEmail.sendKeys(strAuthEmail);
@@ -187,6 +187,7 @@ public class RegistrationPage {
     public void clickRgstrBtn() {
         rgstrBtn.click();
     }
+
     public void clickSignOutBtn() {
         signOutBtn.click();
     }

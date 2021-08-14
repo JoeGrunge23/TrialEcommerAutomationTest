@@ -9,6 +9,9 @@ public class LoginTest {
 
     WebDriver driver;
 
+    @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[1]/a")
+    WebElement indexSignIn;
+
     @FindBy(id = "email")
     WebElement loginEmail;
 
@@ -18,10 +21,18 @@ public class LoginTest {
     @FindBy(id = "SubmitLogin")
     WebElement loginBtn;
 
+    @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[2]/a")
+    WebElement signOut;
+
     public LoginTest(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public void clickIndexSignIn() {
+        indexSignIn.click();
+    }
+
 
     public void setLoginEmail(String strLoginEmail) {
         loginEmail.sendKeys(strLoginEmail);
@@ -35,6 +46,10 @@ public class LoginTest {
         loginBtn.click();
     }
 
+    public void clickSignOut() {
+        signOut.click();
+    }
+
     /**
      * @param strLoginEmail
      * @param strLoginPassword
@@ -42,9 +57,11 @@ public class LoginTest {
 
     public void loginToEcommerce(String strLoginEmail, String strLoginPassword) {
 
+        this.clickIndexSignIn();
         this.setLoginEmail(strLoginEmail);
         this.setLoginPassword(strLoginPassword);
         this.clickLoginBtn();
+        this.clickSignOut();
     }
 
 
