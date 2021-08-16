@@ -2,7 +2,9 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -13,8 +15,8 @@ import pages.ShopTest;
 import java.util.concurrent.TimeUnit;
 
 public class Testing {
-    String driverPathLinux = "resources/linux/chromedriver",
-            userName = "9test081121@mailinator.com",
+    String driverPathLinux = "resources/windows/chromedriver.exe",
+            userName = "11test081621@mailinator.com",
             password = "Test123";
 
     WebDriver driver;
@@ -24,8 +26,13 @@ public class Testing {
 
     @BeforeTest
     public void setup() {
+        ChromeOptions incognitoChrome  = new ChromeOptions();
+        incognitoChrome.addArguments("---incognito");
+        DesiredCapabilities desiredCapabilities =  DesiredCapabilities.chrome();
+        desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, incognitoChrome);
         System.setProperty("webdriver.chrome.driver", driverPathLinux);
-        driver = new ChromeDriver();
+
+        driver = new ChromeDriver(incognitoChrome);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://automationpractice.com/index.php");
@@ -61,23 +68,23 @@ public class Testing {
                 );
     }
 
-    @Test(priority = 2)
-    public void loginTestProcess(){
-        objLoginTest = new LoginTest(driver);
-        objLoginTest.loginToEcommerce(userName, password);
+//    @Test(priority = 2)
+//    public void loginTestProcess(){
+//        objLoginTest = new LoginTest(driver);
+//        objLoginTest.loginToEcommerce(userName, password);
+//
+//    }
 
-    }
-
-    @Test(priority = 3)
-    public void shopTestInCommerce(){
-        objShop = new ShopTest(driver);
-
-        objShop.shopTestInCommerce(
-                userName,
-                password,
-                "2",
-                "M");
-
-    }
+//    @Test(priority = 3)
+//    public void shopTestInCommerce(){
+//        objShop = new ShopTest(driver);
+//
+//        objShop.shopTestInCommerce(
+//                userName,
+//                password,
+//                "2",
+//                "M");
+//
+//    }
 
 }

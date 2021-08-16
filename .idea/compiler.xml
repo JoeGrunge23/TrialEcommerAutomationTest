@@ -9,5 +9,8 @@
         <module name="TrialEcommerceAutomationTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="untitled" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>

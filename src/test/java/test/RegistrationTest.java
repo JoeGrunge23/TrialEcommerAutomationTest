@@ -11,8 +11,8 @@ import pages.RegistrationPage;
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationTest {
-    String driverPathLinux = "resources/linux/chromedriver",
-            userName = "10test081021@mailinator.com",
+    String driverPathLinux = "resources/windows/chromedriver.exe",
+            userName = "12test081021@mailinator.com",
             password = "Test123!";
     WebDriver driver;
     RegistrationPage objRegistration;
@@ -25,10 +25,10 @@ public class RegistrationTest {
         driver.get("http://automationpractice.com/index.php");
     }
 
-    @AfterTest
-    public void quit() {
-        driver.quit();
-    }
+//    @AfterTest
+//    public void quit() {
+//        driver.quit();
+//    }
 
 
     @Test(priority = 0)
